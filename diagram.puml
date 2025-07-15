@@ -1,0 +1,68 @@
+@startuml
+
+class User {
+  +id: Guid
+  +userName: string
+  +email: string
+  +profilePictureUrl: string
+}
+
+class Post {
+  +id: Guid
+  +authorId: Guid
+  +title: string
+  +body: string
+  +imageUrl: string
+  +createdAt: DateTime
+}
+
+class Comment {
+  +id: Guid
+  +postId: Guid
+  +authorId: Guid
+  +parentCommentId: Guid? 
+  +body: string
+  +createdAt: DateTime
+}
+
+class Like {
+  +id: Guid
+  +userId: Guid
+  +postId: Guid?
+  +commentId: Guid?
+  +createdAt: DateTime
+}
+
+enum FriendRequestStatus {
+  Pending
+  Accepted
+  Rejected
+}
+
+class FriendRequest {
+  +id: Guid
+  +fromUserId: Guid
+  +toUserId: Guid
+  +status: FriendRequestStatus
+  +timestamp: DateTime
+}
+
+' Relaciones
+User "1" -- "0..*" Post : owns
+Post "0..*" -- "1" User : authored_by
+
+Post "1" -- "0..*" Comment : has
+Comment "0..*" -- "1" Post : on
+
+Comment "1" -- "0..*" Comment : replies_to
+
+User "1" -- "0..*" Like : gives
+Like "0..*" -- "1" User : by
+
+Post "1" <-- "0..*" Like : liked_in_post
+Comment "1" <-- "0..*" Like : liked_in_comment
+
+User "1" -- "0..*" FriendRequest : sent
+User "1" -- "0..*" FriendRequest : received
+
+@enduml
