@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 
 namespace Blog.API.Models
 {
@@ -14,6 +16,7 @@ namespace Blog.API.Models
         // Navigation properties
         public virtual Post Post { get; set; }
         public virtual User Author { get; set; }
+        public ICollection<Like> Likes { get; set; } = new List<Like>();
         public virtual Comment ParentComment { get; set; }
         public virtual ICollection<Comment> Replies { get; set; }
     }

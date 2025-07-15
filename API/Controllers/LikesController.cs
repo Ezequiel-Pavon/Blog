@@ -1,9 +1,12 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Blog.API.Data;
 using Blog.API.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+
 
 namespace Blog.API.Controllers
 {
@@ -27,7 +30,7 @@ namespace Blog.API.Controllers
 
         // GET: api/likes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Like>> GetLike(int id)
+        public async Task<ActionResult<Like>> GetLike(Guid id)
         {
             var like = await _context.Likes.FindAsync(id);
 
@@ -51,7 +54,7 @@ namespace Blog.API.Controllers
 
         // PUT: api/likes/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutLike(int id, Like like)
+        public async Task<IActionResult> PutLike(Guid id, Like like)
         {
             if (id != like.Id)
             {
@@ -81,7 +84,7 @@ namespace Blog.API.Controllers
 
         // DELETE: api/likes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLike(int id)
+        public async Task<IActionResult> DeleteLike(Guid id)
         {
             var like = await _context.Likes.FindAsync(id);
             if (like == null)
@@ -95,7 +98,7 @@ namespace Blog.API.Controllers
             return NoContent();
         }
 
-        private bool LikeExists(int id)
+        private bool LikeExists(Guid id)
         {
             return _context.Likes.Any(e => e.Id == id);
         }

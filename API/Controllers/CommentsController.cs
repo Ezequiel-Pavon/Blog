@@ -1,9 +1,12 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Blog.API.Data;
 using Blog.API.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+
 
 namespace Blog.API.Controllers
 {
@@ -27,7 +30,7 @@ namespace Blog.API.Controllers
 
         // GET: api/comments/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<Comment>> GetComment(int id)
+        public async Task<ActionResult<Comment>> GetComment(Guid id)
         {
             var comment = await _context.Comments.FindAsync(id);
 
@@ -51,7 +54,7 @@ namespace Blog.API.Controllers
 
         // PUT: api/comments/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutComment(int id, Comment comment)
+        public async Task<IActionResult> PutComment(Guid id, Comment comment)
         {
             if (id != comment.Id)
             {
@@ -81,7 +84,7 @@ namespace Blog.API.Controllers
 
         // DELETE: api/comments/{id}
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteComment(int id)
+        public async Task<IActionResult> DeleteComment(Guid id)
         {
             var comment = await _context.Comments.FindAsync(id);
             if (comment == null)
@@ -95,7 +98,7 @@ namespace Blog.API.Controllers
             return NoContent();
         }
 
-        private bool CommentExists(int id)
+        private bool CommentExists(Guid id)
         {
             return _context.Comments.Any(e => e.Id == id);
         }

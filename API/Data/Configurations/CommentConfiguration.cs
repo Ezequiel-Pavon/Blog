@@ -20,17 +20,17 @@ namespace Blog.API.Data.Configurations
                 .HasMaxLength(500); // Example length constraint
 
             // Configure relationships
-            builder.HasOne<User>()
+            builder.HasOne(c => c.Author)
                 .WithMany(u => u.Comments)
                 .HasForeignKey(c => c.AuthorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne<Post>()
+            builder.HasOne(c => c.Post)
                 .WithMany(p => p.Comments)
                 .HasForeignKey(c => c.PostId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne<Comment>()
+            builder.HasOne(c => c.ParentComment)
                 .WithMany(c => c.Replies)
                 .HasForeignKey(c => c.ParentCommentId)
                 .OnDelete(DeleteBehavior.Restrict);

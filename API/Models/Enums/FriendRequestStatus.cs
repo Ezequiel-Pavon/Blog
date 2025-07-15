@@ -1,6 +1,10 @@
-public enum FriendRequestStatus
+namespace Blog.API.Models.Enums
 {
-    Pending,
-    Accepted,
-    Rejected
+    public enum FriendRequestStatus
+    {
+        Pending,
+        Accepted,
+        Rejected
+    }
 }
+    

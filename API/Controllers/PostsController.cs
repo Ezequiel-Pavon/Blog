@@ -1,9 +1,12 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Blog.API.Data;
 using Blog.API.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+
 
 namespace Blog.API.Controllers
 {
@@ -27,7 +30,7 @@ namespace Blog.API.Controllers
 
         // GET: api/posts/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<Post>> GetPost(int id)
+        public async Task<ActionResult<Post>> GetPost(Guid id)
         {
             var post = await _context.Posts.FindAsync(id);
 
@@ -51,7 +54,7 @@ namespace Blog.API.Controllers
 
         // PUT: api/posts/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePost(int id, Post post)
+        public async Task<IActionResult> UpdatePost(Guid id, Post post)
         {
             if (id != post.Id)
             {
@@ -81,7 +84,7 @@ namespace Blog.API.Controllers
 
         // DELETE: api/posts/{id}
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePost(int id)
+        public async Task<IActionResult> DeletePost(Guid id)
         {
             var post = await _context.Posts.FindAsync(id);
             if (post == null)
@@ -95,7 +98,7 @@ namespace Blog.API.Controllers
             return NoContent();
         }
 
-        private bool PostExists(int id)
+        private bool PostExists(Guid id)
         {
             return _context.Posts.Any(e => e.Id == id);
         }

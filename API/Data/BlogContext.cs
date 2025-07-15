@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Blog.API.Models;
+using System.Reflection;
 
 namespace Blog.API.Data
 {
@@ -16,8 +18,8 @@ namespace Blog.API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configure entity relationships and constraints here
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
