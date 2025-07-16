@@ -1,0 +1,83 @@
+# Node modules
+node_modules/
+socialNet-frontend/node_modules/
+API/bin/
+API/obj/
+out/
+dist/
+build/
+.svelte-kit/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependency directories
+jspm_packages/
+
+# dotenv environment variables
+.env
+.env.*.local
+
+# SvelteKit build output
+.svelte-kit/
+build/
+*.svelte-kit
+
+# VSCode settings
+.vscode/
+*.code-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# IDEs
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+
+# Coverage
+coverage/
+*.lcov
+
+# Misc
+*.tgz
+*.swp
+*.bak
+*.tmp
+*.temp
+*.cache
+*.pid
+
+# Compiled output
+*.out
+*.exe
+*.dll
+*.pdb
+
+# Test output
+test-results/
+*.test.js
+
+# Package locks (if you want to ignore root ones)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# SvelteKit preview output
+.vercel/
+.netlify/
+firebase.json
+now.json
+
+# Windows
+$RECYCLE.BIN/ 
