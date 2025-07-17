@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { fade, fly } from 'svelte/transition';
-  import Button from '$lib/components/button.svelte';
+  import Button from '../lib/components/button.svelte';
 
   let mounted = false;
   let posts = [
@@ -48,18 +48,18 @@
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-16">
       <!-- Hero Text -->
       <div class="flex-1 text-center lg:text-left" in:fly={{ x: -50, duration: 1000 }}>
-        <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white drop-shadow-lg">
+        <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white drop-shadow-lg bg-white/70 dark:bg-gray-900/60 rounded-xl px-4 py-2 inline-block">
           Connect, Share & Engage<br>
           <span class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             with Your Community
           </span>
         </h1> 
-        <!-- svelte-ignore element_implicitly_closed -->
-        <p class="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto lg:mx-0"></p>
+        <p class="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto lg:mx-0 bg-white/70 dark:bg-gray-900/60 rounded-lg px-4 py-2 shadow">
           Join our social network and start sharing your stories with people who share your interests.
+        </p>
         <div class="mt-10 flex flex-wrap justify-center lg:justify-start gap-4">
-          <button class="px-8 py-3 text-lg rounded-full shadow-lg bg-blue-500 text-white">Get Started</button>
-          <button class="px-8 py-3 text-lg rounded-full bg-white text-blue-500">Learn More</button>
+          <button class="px-8 py-3 text-lg rounded-full shadow-lg bg-blue-500 text-white hover:bg-blue-600 transition font-semibold">Get Started</button>
+          <button class="px-8 py-3 text-lg rounded-full bg-white/90 text-blue-500 border border-blue-500 font-semibold shadow hover:bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-400 transition">Learn More</button>
         </div>
       </div>
       <!-- Hero Image -->

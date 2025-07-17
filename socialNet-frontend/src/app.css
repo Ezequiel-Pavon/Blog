@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Paleta y utilidades personalizadas */
+.bg-card { @apply bg-white dark:bg-gray-900; }
+.bg-bg { @apply bg-gray-100 dark:bg-gray-950; }
+.text-accent { @apply text-pink-400; }
